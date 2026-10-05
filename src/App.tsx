@@ -1,4 +1,3 @@
-import "./index.css";
 import Nav from "./sections/Nav";
 import Hero from "./sections/Hero";
 import Divisor from "./sections/Divisor";
@@ -8,7 +7,7 @@ import Frase from "./sections/Frase";
 import Sobre from "./sections/Sobre";
 import Autores from "./sections/Autores";
 import Comprar from "./sections/Comprar";
-import { ProgressBar, StickyCta } from "./components/Ux";
+import { ProgressBar } from "./components/Ux";
 
 export default function App() {
   return (
@@ -29,7 +28,6 @@ export default function App() {
       <footer className="footer">
         © {new Date().getFullYear()} Único, amado e aprovado
       </footer>
-      <StickyCta />
     </>
   );
 }

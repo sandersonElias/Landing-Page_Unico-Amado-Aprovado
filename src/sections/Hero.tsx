@@ -105,6 +105,14 @@ export default function Hero() {
               rot: -8,
               speed: 0.16,
             },
+            {
+              name: "segundo-coracao",
+              top: "82%",
+              left: "48%",
+              size: 132,
+              rot: -6,
+              speed: 0.1,
+            },
           ]}
         />
       </div>
