@@ -7,7 +7,7 @@ export default function SkylineSection() {
   const s = content.skyline;
   return (
     <ScrollExpand
-      src="/img/skyline.webp"
+      src={mobile ? '/assets/Skyline_mobile.png' : '/assets/Skyline_desktop.png'}
       alt="Cidade em preto e branco, no estilo de quadrinhos"
       title={s.title}
       scrollHint={s.hint}

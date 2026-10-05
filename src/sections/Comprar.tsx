@@ -1,4 +1,4 @@
-import { BUY_URL, content } from '../content';
+import { CHECKOUT_URL, content } from '../content';
 
 export default function Comprar() {
   const c = content.comprar;
@@ -6,7 +6,9 @@ export default function Comprar() {
     <section id="comprar" className="comprar">
       <h2>{c.title}</h2>
       <p className="preco">{c.price}</p>
-      <a href={BUY_URL} className="btn btn-sun">{content.cta}</a>
+      {CHECKOUT_URL
+        ? <a href={CHECKOUT_URL} className="btn btn-sun">{content.cta}</a>
+        : <span className="btn btn-sun btn-off" aria-disabled="true">Link de compra em breve</span>}
       <p className="nota">{c.note}</p>
     </section>
   );
