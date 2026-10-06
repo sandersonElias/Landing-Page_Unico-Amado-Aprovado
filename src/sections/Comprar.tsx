@@ -6,11 +6,11 @@ export default function Comprar() {
     <section id="comprar" className="comprar">
       <picture>
         <source
-          media="(max-width: 700px)"
-          srcSet="/assets/banner-mobile.webp"
+          media="(max-width: 900px)"
+          srcSet="../../public/assets/banner-mobile.webp"
         />
         <img
-          src="/assets/banner.webp"
+          src="../../public/assets/banner.webp"
           alt=""
           className="comprar-bg"
           loading="lazy"

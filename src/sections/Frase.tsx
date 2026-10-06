@@ -1,9 +1,9 @@
-import { content } from '../content';
+import { content } from "../content";
 
 export default function Frase() {
   return (
     <section className="frase">
-      <img src="/assets/banner.webp" alt="" className="frase-bg" loading="lazy" />
+      <img src="" alt="" className="frase-bg" loading="lazy" />
       <blockquote className="frase-texto">{content.frase}</blockquote>
     </section>
   );
