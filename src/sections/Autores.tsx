@@ -41,19 +41,27 @@ export default function Autores() {
           items={[
             {
               name: "coracao-vermelho",
-              top: "14%",
-              left: "-6%",
-              size: 56,
+              top: "16%",
+              left: "-4%",
+              size: 58,
               rot: -10,
               speed: 0.12,
             },
             {
               name: "estrela",
               top: "4%",
-              left: "84%",
+              left: "86%",
               size: 52,
               rot: 12,
               speed: 0.18,
+            },
+            {
+              name: "coroa-amarela",
+              top: "58%",
+              left: "88%",
+              size: 60,
+              rot: 10,
+              speed: 0.1,
             },
           ]}
         />

@@ -5,6 +5,22 @@ import { useMediaQuery } from "../hooks";
 import { content } from "../content";
 import Stickers from "../components/Stickers";
 
+// Adesivos presos aos cantos de cada foto, para nunca cair em cima do texto
+const FOTO_ADESIVOS = [
+  [{ name: "deus", top: "-5%", left: "58%", size: 104, rot: -6, speed: 0.08 }],
+  [
+    {
+      name: "coracao-vermelho",
+      top: "-6%",
+      left: "80%",
+      size: 58,
+      rot: 12,
+      speed: 0.1,
+    },
+    { name: "cruz", top: "82%", left: "-6%", size: 58, rot: -8, speed: 0.12 },
+  ],
+];
+
 export default function Sobre() {
   const ref = useRef<HTMLElement>(null);
   const mobile = useMediaQuery("(max-width: 700px)");
@@ -56,41 +72,16 @@ export default function Sobre() {
             key={item.title}
             className={`sobre-item ${i % 2 ? "invertido" : ""}`}
           >
-            <img src={item.img} alt={item.alt} loading="lazy" />
+            <div className="sobre-foto">
+              <img src={item.img} alt={item.alt} loading="lazy" />
+              <Stickers items={FOTO_ADESIVOS[i % FOTO_ADESIVOS.length]} />
+            </div>
             <div>
               <h2>{item.title}</h2>
               <p>{item.text}</p>
             </div>
           </article>
         ))}
-        <Stickers
-          items={[
-            {
-              name: "coracao-vermelho",
-              top: "1%",
-              left: "88%",
-              size: 60,
-              rot: 12,
-              speed: 0.12,
-            },
-            {
-              name: "deus",
-              top: "44%",
-              left: "42%",
-              size: 110,
-              rot: -6,
-              speed: 0.1,
-            },
-            {
-              name: "cruz",
-              top: "91%",
-              left: "8%",
-              size: 62,
-              rot: 8,
-              speed: 0.16,
-            },
-          ]}
-        />
       </div>
     </section>
   );

@@ -15,12 +15,15 @@ export const content = {
     p: "mas no amor de Deus.",
   },
   paraQuem: {
+    img: "/assets/capa_2.png",
+    alt: "Devocional Único, amado e aprovado sobre outro exemplar",
+    stat: { numero: "30", texto: "mensagens" },
     title: "Para descansar em quem você realmente é",
     text: "Em meio às inseguranças, comparações, medos e pressões da vida, este devocional é um convite para descansar em quem você realmente é.",
     itens: [
-      "Reflexões",
-      "Palavras de encorajamento",
-      "Direcionamentos bíblicos",
+      { texto: "Reflexões", icone: "estrela" },
+      { texto: "Palavras de encorajamento", icone: "coracao-vermelho" },
+      { texto: "Direcionamentos bíblicos", icone: "cruz" },
     ],
   },
   frase:
@@ -44,7 +47,8 @@ export const content = {
     alt: "Ilustração dos autores Alysson e Christiane",
     heading: "Quem escreveu",
     nomes: ["Alysson Bruno F. Barros", "Christiane Fernanda N. Barros"],
-    text: "TODO: bio dos autores.",
+    // Frase da contracapa. Troque pela bio dos autores quando tiver.
+    text: "Este devocional foi entregue do coração de Deus para fazer a diferença na vida das pessoas, sendo acessível a todos os públicos, mas pensando especialmente na juventude.",
   },
   comprar: {
     title: "Leve esse livro para casa",

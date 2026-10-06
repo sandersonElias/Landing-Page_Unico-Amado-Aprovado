@@ -7,10 +7,10 @@ export default function Comprar() {
       <picture>
         <source
           media="(max-width: 900px)"
-          srcSet="../../public/assets/banner-mobile.webp"
+          srcSet="/assets/banner-mobile.webp"
         />
         <img
-          src="../../public/assets/banner.webp"
+          src="/assets/banner.webp"
           alt=""
           className="comprar-bg"
           loading="lazy"
