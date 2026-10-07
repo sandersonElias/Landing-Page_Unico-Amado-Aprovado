@@ -72,6 +72,7 @@ h2 {
    ========================================================================== */
 .btn {
   display: inline-block;
+  white-space: nowrap;
   font-family: var(--body);
   font-weight: 700;
   font-size: 1rem;
@@ -130,6 +131,9 @@ h2 {
 }
 .nav.oculta {
   transform: translateY(-150%);
+}
+.nav .cta-curto {
+  display: none;
 }
 .nav-brand {
   font-family: var(--display);
@@ -626,6 +630,7 @@ h2 {
 }
 .autores-arte img {
   position: relative;
+  width: 100%;
   opacity: 0;
   transform: translateY(48px);
   transition:
@@ -635,8 +640,8 @@ h2 {
 .autores-sol {
   position: absolute;
   left: 50%;
-  bottom: -18%;
-  width: 100%;
+  bottom: -8%;
+  height: 108%;
   aspect-ratio: 1;
   translate: -50% 0;
   border-radius: 50%;
@@ -674,8 +679,8 @@ h2 {
 }
 .comprar-conteudo {
   position: relative;
-  margin-left: 47%;
-  width: 36%;
+  margin-left: 49%;
+  width: 35%;
   display: grid;
   gap: 1.1rem;
   justify-items: start;
@@ -711,8 +716,57 @@ h2 {
    8. RESPONSIVO E ACESSIBILIDADE
    ========================================================================== */
 @media (max-width: 700px) {
+  .nav {
+    top: 8px;
+    width: calc(100% - 16px);
+    padding: 0.35rem 0.4rem 0.35rem 1.1rem;
+  }
   .nav-brand {
     font-size: 0.95rem;
+  }
+  .nav .cta-longo {
+    display: none;
+  }
+  .nav .cta-curto {
+    display: inline;
+  }
+  .nav .btn-sm {
+    padding: 0.55rem 1.1rem;
+  }
+  /* Texto direto sobre o banner: a imagem fica colada embaixo e o topo se funde com a cor de fundo */
+  .comprar {
+    display: block;
+    aspect-ratio: auto;
+    min-height: 0;
+    padding: 5rem 1.25rem 84vw;
+    background: #0dadca;
+  }
+  .comprar-bg {
+    inset: auto 0 0 0;
+    height: auto;
+    object-fit: fill;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 14%);
+    mask-image: linear-gradient(to bottom, transparent, #000 14%);
+  }
+  .comprar-conteudo {
+    margin: 0;
+    width: auto;
+    gap: 0.9rem;
+    justify-items: center;
+    text-align: center;
+  }
+  .comprar h2 {
+    max-width: 11ch;
+    font-size: clamp(2rem, 8.4vw, 2.8rem);
+  }
+  .preco {
+    font-size: clamp(2.2rem, 9vw, 3rem);
+  }
+  .autores {
+    gap: 1.5rem;
+  }
+  .autores-texto {
+    padding-bottom: 0;
   }
   .hero {
     flex-direction: column;
@@ -744,7 +798,7 @@ h2 {
   }
   .autores-arte {
     justify-self: center;
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
   .frase .sticker {
     width: 48px !important;
@@ -771,39 +825,5 @@ h2 {
     opacity: 1;
     transform: none;
     transition: none;
-  }
-}
-
-/* Comprar até 900px: texto em cima, banner vertical embaixo (sem sobreposição) */
-@media (max-width: 900px) {
-  .comprar {
-    aspect-ratio: auto;
-    padding: 0;
-    display: flex;
-    flex-direction: column-reverse;
-    background: var(--navy);
-  }
-  .comprar-bg {
-    position: static;
-    height: min(105vw, 640px);
-    object-position: center bottom;
-  }
-  .comprar-conteudo {
-    margin: 0;
-    width: auto;
-    padding: 4.5rem 1.25rem 2.5rem;
-    justify-items: center;
-    text-align: center;
-    color: var(--paper);
-  }
-  .comprar-conteudo .btn-sun {
-    background: var(--sun);
-    color: var(--navy);
-  }
-  .comprar h2 {
-    font-size: clamp(2rem, 8vw, 2.8rem);
-  }
-  .preco {
-    font-size: clamp(2.2rem, 9vw, 3rem);
   }
 }

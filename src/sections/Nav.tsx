@@ -21,8 +21,9 @@ export default function Nav() {
       <a href="#topo" className="nav-brand">
         {content.brand}
       </a>
-      <a href={BUY_URL} className="btn btn-sun btn-sm">
-        {content.cta}
+      <a href={BUY_URL} className="btn btn-sun btn-sm" aria-label={content.cta}>
+        <span className="cta-longo">{content.cta}</span>
+        <span className="cta-curto">Comprar</span>
       </a>
     </header>
   );

@@ -6,7 +6,7 @@ export default function Comprar() {
     <section id="comprar" className="comprar">
       <picture>
         <source
-          media="(max-width: 900px)"
+          media="(max-width: 700px)"
           srcSet="/assets/banner-mobile.webp"
         />
         <img

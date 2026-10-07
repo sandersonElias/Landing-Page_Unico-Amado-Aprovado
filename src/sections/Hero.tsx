@@ -7,7 +7,7 @@ import Stickers from "../components/Stickers";
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
 
-  // Parallax: rolagem da página + mouse (só em dispositivos com mouse).
+  // Parallax de rolagem da página.
   useEffect(() => {
     const el = ref.current;
     if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
@@ -22,23 +22,10 @@ export default function Hero() {
         ),
       );
     };
-    const onMove = (e: PointerEvent) => {
-      if (e.pointerType !== "mouse") return;
-      el.style.setProperty(
-        "--mx",
-        String((e.clientX / window.innerWidth - 0.5) * 2),
-      );
-      el.style.setProperty(
-        "--my",
-        String((e.clientY / window.innerHeight - 0.5) * 2),
-      );
-    };
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("pointermove", onMove);
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("pointermove", onMove);
     };
   }, []);
 
@@ -48,8 +35,6 @@ export default function Hero() {
         <PaperTexture
           image={HERO_BG}
           colorBack="#f4efe6"
-          colorFront="#d8d0bf"
-          contrast={0.35}
           roughness={0.45}
           fiber={0.35}
           crumples={0.25}

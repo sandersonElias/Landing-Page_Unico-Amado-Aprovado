@@ -3,7 +3,7 @@ import ScrollExpand from "../components/reactbits/ScrollExpand";
 import { useMediaQuery } from "../hooks";
 import { content } from "../content";
 
-const BASE = "../../public/assets"; // pasta dos adesivos
+const BASE = "/assets"; // pasta dos adesivos
 
 // Adesivos que "pipocam" nos cantos conforme a cidade se abre
 const ADESIVOS = [
@@ -18,7 +18,7 @@ export default function SkylineSection() {
   const s = content.skyline;
   return (
     <ScrollExpand
-      src="../../public/assets/Skyline_desktop.png"
+      src="/assets/Skyline_desktop.png"
       alt="Cidade em preto e branco, no estilo de quadrinhos"
       title={s.title}
       scrollHint={s.hint}
