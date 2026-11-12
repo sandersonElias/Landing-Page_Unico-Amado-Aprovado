@@ -1,75 +1,103 @@
-# React + TypeScript + Vite
+# Único, amado e aprovado — Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page do devocional **"Único, amado e aprovado"**, um livro com 30 mensagens para adolescentes e jovens, escrito por Alysson Bruno F. Barros e Christiane Fernanda N. Barros.
 
-Currently, two official plugins are available:
+A página apresenta o livro, seus autores e o propósito da obra, com um visual jovem e vibrante, e direciona o visitante para a compra.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Demo:** https://devocional-page.vercel.app
 
-## React Compiler
+## Tecnologias
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite 8](https://vite.dev/)
+- [@paper-design/shaders-react](https://github.com/paper-design/shaders) — textura de papel animada no hero
+- CSS puro com design tokens (sem framework de UI)
 
-## Expanding the ESLint configuration
+## Como rodar
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Pré-requisitos: Node.js `^20.19` ou `>=22.12` (exigência do Vite 8) e npm.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# instalar dependências
+npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# servidor de desenvolvimento (http://localhost:5173)
+npm run dev
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# build de produção (typecheck + bundle)
+npm run build
 
+# pré-visualizar o build
+npm run preview
+
+# lint
+npm run lint
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Estrutura
 
 ```
+public/
+  assets/              Imagens, mockups e adesivos (servidos em /assets/...)
+src/
+  sections/            Seções da página (Nav, Hero, Divisor, Skyline, ParaQuem,
+                       Frase, Sobre, Autores, Comprar)
+  components/
+    reactbits/         Componentes animados (ScrollExpand, TextLoop)
+    ui/                Componente de efeito ASCII (Asciify)
+    Stickers.tsx       Adesivos com parallax
+    Ux.tsx             Barra de progresso de leitura
+  content.ts           Textos, preços e links da página
+  config.ts            Configurações pontuais (imagem de fundo do hero)
+  index.css            Tokens de design, layout e estilos das seções
+  App.tsx              Composição das seções
+```
+
+## Personalização
+
+### Textos e informações
+
+Praticamente todo o conteúdo está centralizado em `src/content.ts`: título, subtítulo do hero, textos de cada seção, nomes dos autores, preço e link de compra. Altere ali sem tocar nos componentes.
+
+### Link de compra
+
+O botão de compra usa `CHECKOUT_URL` em `src/content.ts`. Enquanto estiver vazio, os CTAs levam para a âncora `#comprar` da própria página. Para ativar o checkout externo, basta preencher:
+
+```ts
+export const CHECKOUT_URL = "https://loja.exemplo.com/produto";
+```
+
+### Imagens
+
+As imagens ficam em `public/assets/` e são referenciadas no código com o caminho absoluto `/assets/nome-do-arquivo`. **Não** use `../../public/assets/...` nem `/public/assets/...` — no Vite, tudo em `public/` é servido a partir da raiz, então esses caminhos resultam em 404.
+
+Para trocar a arte de fundo do hero, defina `HERO_BG` em `src/config.ts`; vazio usa apenas a textura de papel.
+
+## Deploy
+
+O projeto está publicado na [Vercel](https://vercel.com/) como site estático gerado pelo Vite.
+
+Configuração do projeto na Vercel:
+
+- **Build Command:** `vite build` (a Vercel detecta o framework automaticamente)
+- **Output Directory:** `dist`
+
+Deploy manual via CLI:
+
+```bash
+npm i -g vercel
+vercel --prod
+```
+
+Para deploy automático a cada push, conecte o repositório do GitHub pela integração da Vercel (Project → Settings → Git).
+
+## Observações
+
+- `npm run build` executa o typecheck (`tsc -b`) antes do bundle. Mantenha-o passando para evitar erros silenciosos no deploy.
+- `npm run lint` ainda acusa avisos no componente vendorizado `src/components/ui/asciify-react.tsx` (código de terceiros).
+- As imagens em `public/assets/` somam cerca de 10 MB. Converter os PNGs grandes para WebP melhora bastante o carregamento em conexões móveis.
+
+## Licença
+
+Uso pessoal do projeto. Os textos e as imagens do livro pertencem aos seus autores.

@@ -1,8 +1,10 @@
 import type { CSSProperties } from "react";
 import TextLoop from "../components/reactbits/TextLoop";
-import { DIVISOR_TEXT } from "../config";
 
 const BASE = "/assets"; // pasta dos adesivos (PNG transparente)
+
+// Os {…} viram ícones SVG (coração, coroa, cruz). O separador final é a estrela de 4 pontas.
+const TEXTO = "Único {heart} Amado {crown} Aprovado {cross}";
 
 // size = largura em px, y = deslocamento vertical a partir do centro da faixa, rot = giro em graus
 const FAIXA = [
@@ -24,11 +26,11 @@ export default function Divisor() {
   return (
     <div className="divisor" aria-hidden="true">
       <TextLoop
-        text={DIVISOR_TEXT}
+        text={TEXTO}
         shape="wave"
         speed={70}
         direction="forward"
-        separator="✦"
+        separator="{sparkle}"
         curviness={16}
         fontSize={30}
         fontWeight={700}

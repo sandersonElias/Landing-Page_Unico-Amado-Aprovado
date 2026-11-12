@@ -35,7 +35,6 @@ export default function Autores() {
         <p>{a.text}</p>
       </div>
       <div className="autores-arte">
-        <span className="autores-sol" aria-hidden="true" />
         <img src={a.img} alt={a.alt} loading="lazy" />
         <Stickers
           items={[
